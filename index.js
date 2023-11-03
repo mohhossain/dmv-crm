@@ -1,13 +1,25 @@
 import express from "express";
-
+import authroutes from "./controllers/authController.js";
+import cors from "cors";
+import verify from "./controllers/verifyToken.js";
+import clientRoutes from "./controllers/clientController.js";
 const app = express();
-const API_KEY = "10837082db8eeff18facc970f9e775f7";
-const URL = "https://api.jotform.com/";
-const FORM_ID = "232915479006156";
+app.use(express.json());
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+app.use("/auth", authroutes);
+app.use(verify);
+
+app.use("/api/clients", clientRoutes);
 
 app.listen(5555, () => {
   console.log("Listening on port 5555");
