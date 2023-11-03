@@ -1,0 +1,37 @@
+.new-user-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+.new-user-form input{
+    margin: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    width: 50%;
+    background-color: #dddddd;
+}
+
+.new-user-form button{
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 25px;
+    width: 50%;
+    background-color: #ffffff;
+}
+
+.new-user-form button:hover{
+    background-color: #2ef5ff;
+}
