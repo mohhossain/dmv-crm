@@ -12,6 +12,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+import { useUserContext } from "../context/userContext";
+
 import { useState, useEffect } from "react";
 
 function Copyright(props) {
@@ -37,28 +39,30 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const { login } = useUserContext();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    login(data.get("email"), data.get("password"));
 
-    const response = await fetch("http://localhost:5555/auth/signin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: data.get("email"),
-        password: data.get("password"),
-      }),
-    });
+    // const response = await fetch("http://localhost:5555/auth/signin", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     email: data.get("email"),
+    //     password: data.get("password"),
+    //   }),
+    // });
 
-    const json = await response.json();
-    console.log(json);
+    // const json = await response.json();
+    // console.log(json);
 
-    localStorage.setItem("token", json.user.token);
-    if (json.user.token) {
-      window.location.href = "/";
-    }
+    // localStorage.setItem("token", json.user.token);
+    // if (json.user.token) {
+    //   window.location.href = "/";
+    // }
   };
 
   return (

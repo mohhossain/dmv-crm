@@ -3,9 +3,12 @@ import UserList from "./userList";
 import NewUserForm from "./newUserForm";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import { useUserContext } from "../context/userContext";
 function Dashboard() {
+  const { user } = useUserContext();
   return (
     <div className="dashboard">
+      <h2> Logged in as {user.name} </h2>
       {/* logout button */}
       <button
         onClick={() => {

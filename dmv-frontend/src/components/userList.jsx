@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useClientContext } from "../context/clientContext";
 
 function UserList() {
-  const [users, setUsers] = useState([]);
+  const { clients } = useClientContext();
+  const { getClients } = useClientContext();
+  // const [clientList, setClientList] = useState(getClients());
 
   useEffect(() => {
-    fetch("http://localhost:5555/api/clients", {
-      headers: {
-        authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setUsers(data);
-      });
+    getClients();
+    console.log(clients);
   }, []);
 
   return (
@@ -28,7 +23,7 @@ function UserList() {
         </tr>
       </thead>
       <tbody>
-        {users.map((user) => (
+        {clients.map((user) => (
           <tr key={user.id}>
             <td>{user.id}</td>
             <td>{user.name}</td>

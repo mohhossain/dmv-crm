@@ -3,6 +3,7 @@ import authroutes from "./controllers/authController.js";
 import cors from "cors";
 import verify from "./controllers/verifyToken.js";
 import clientRoutes from "./controllers/clientController.js";
+import { getLoggedInUser } from "./controllers/verifyToken.js";
 const app = express();
 app.use(express.json());
 
@@ -18,7 +19,7 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authroutes);
 app.use(verify);
-
+app.use("/api/user", getLoggedInUser);
 app.use("/api/clients", clientRoutes);
 
 app.listen(5555, () => {

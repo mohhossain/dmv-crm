@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "./css/newUserForm.css";
+import { useClientContext } from "../context/clientContext";
 
 function NewUserForm() {
+  const { addClient } = useClientContext();
+  const { client } = useClientContext();
+  const { emailError } = useClientContext();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
@@ -9,6 +14,7 @@ function NewUserForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    addClient({ name, email, address, phone });
     // handle form submission here
   };
 
@@ -43,6 +49,26 @@ function NewUserForm() {
         required
       />
       <button type="submit">Submit</button>
+
+      {emailError && (
+        <p
+          style={{
+            color: "red",
+          }}
+        >
+          Email already exists
+        </p>
+      )}
+
+      {client && (
+        <p
+          style={{
+            color: "green",
+          }}
+        >
+          ✅ Client added successfully!
+        </p>
+      )}
     </form>
   );
 }
