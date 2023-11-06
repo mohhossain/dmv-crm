@@ -39,3 +39,13 @@
 .new-user-form button:hover{
     background-color: #2ef5ff;
 }
+
+.new-user-form select{
+    color: #313131 !important;
+    margin: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    width: 60%;
+    background-color: #dddddd;
+}

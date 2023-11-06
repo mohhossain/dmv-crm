@@ -6,6 +6,7 @@ import Dashboard from "./components/dashboard";
 import Signup from "./components/Signup";
 import { ClientProvider } from "./context/clientContext";
 import { useUserContext } from "./context/userContext";
+import { JobContextProvider } from "./context/jobContext";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -20,17 +21,19 @@ function App() {
   return (
     <>
       <ClientProvider>
-        <Routes>
-          {user ? (
-            <Route path="/" element={<Dashboard />} />
-          ) : (
-            <>
-              <Route path="/" element={<Login />} />
-              <Route path="/signin" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-            </>
-          )}
-        </Routes>
+        <JobContextProvider>
+          <Routes>
+            {user ? (
+              <Route path="/" element={<Dashboard />} />
+            ) : (
+              <>
+                <Route path="/" element={<Login />} />
+                <Route path="/signin" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+              </>
+            )}
+          </Routes>
+        </JobContextProvider>
       </ClientProvider>
     </>
   );

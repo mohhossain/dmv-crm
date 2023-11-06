@@ -13,15 +13,16 @@ datasource db {
 // models: user, client, service, job, payment
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   name      String
-  email     String   @unique
+  email     String    @unique
   password  String
   role      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
   client    Client[]
   Job       Job[]
+  Service   Service[]
 }
 
 model Client {
@@ -41,6 +42,8 @@ model Service {
   id        Int      @id @default(autoincrement())
   name      String
   price     Float
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   Job       Job[]
@@ -50,10 +53,22 @@ model Job {
   id        Int      @id @default(autoincrement())
   user      User     @relation(fields: [userId], references: [id])
   userId    Int
-  client    Client   @relation(fields: [clientId], references: [id])
-  clientId  Int
+  client    Client?  @relation(fields: [clientId], references: [id])
+  clientId  Int?
   service   Service  @relation(fields: [serviceId], references: [id])
   serviceId Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  isPending Boolean  @default(true)
+  Payment   Payment?
+}
+
+model Payment {
+  id        Int      @id @default(autoincrement())
+  job       Job      @relation(fields: [jobId], references: [id])
+  jobId     Int      @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  amount    Float
+  isPaid    Boolean  @default(false)
 }

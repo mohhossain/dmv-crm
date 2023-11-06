@@ -4,6 +4,7 @@ import NewUserForm from "./newUserForm";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useUserContext } from "../context/userContext";
+import JobList from "./jobList";
 function Dashboard() {
   const { user } = useUserContext();
   return (
@@ -46,6 +47,7 @@ function Dashboard() {
       </Popup>
 
       <UserList />
+      <JobList />
     </div>
   );
 }
