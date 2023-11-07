@@ -52,7 +52,7 @@ th, td {
 
 .sidebar button{
     background-color: #00618700;
-    color: rgb(15, 0, 98);
+    color: rgb(255, 255, 255);
     border: none;
     padding: 15px 32px;
     text-align: left;
@@ -107,6 +107,7 @@ th, td {
 .clients td{
     font-size: 15px;
     font-weight: 500;
+    padding: 20px;
     /* make it sticky */
 }
 
@@ -114,6 +115,68 @@ th, td {
     position: sticky;
     top: 0;
 }
+
+.action-buttons p{
+    background-color: transparent;
+    padding: 0px;
+    margin: 0px 0px 0px 15px;
+    cursor: pointer;
+    /* margin-right: 15px; */
+}
+
+.action-buttons p:hover{
+    /* box shadow */
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
+}
 /* .clients tr:nth-child(even) {background-color: #f2f2f2;} */
 
 .clients tr:hover {background-color: #f5f5f5;}
+
+
+/* jobs section */
+
+.jobs table {
+    border-collapse: collapse;
+    width: 100%;
+    /* border: 1px solid #ddd; */
+    font-size: 14px;
+    text-align: left;
+}
+
+.jobs th {
+    background-color: rgb(255, 242, 225);
+    /* font-weight: 900; */
+
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+
+.jobs th,
+td {
+    /* font-size: 24px; */
+    /* font-weight: 500; */
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    /* background-color: #ddd; */
+
+    /* border: 1px solid rgb(74, 74, 74); */
+}
+
+.jobs td {
+    font-size: 15px;
+    font-weight: 500;
+    padding: 20px;
+    /* make it sticky */
+}
+
+.jobs thead tr:first-child th {
+    position: sticky;
+    top: 0;
+}
+
+.jobs tr:hover {
+    background-color: #f5f5f5;
+}
+

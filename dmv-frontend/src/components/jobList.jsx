@@ -26,7 +26,7 @@ function JobList() {
 
   //   console.log(formattedDate); // Output: 1:32 PM
   return (
-    <div>
+    <div className="jobs">
       <button
         onClick={() => {
           window.location.href = "/addjob";

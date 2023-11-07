@@ -66,6 +66,20 @@ function UserList() {
                   ? convertDate(user.Job[0]?.createdAt)
                   : "None"}
               </td>
+
+              <td>
+                <div
+                  className="action-buttons"
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                  }}
+                >
+                  <p>✏️</p>
+                  <p>📄</p>
+                  <p>🗑️</p>
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>
