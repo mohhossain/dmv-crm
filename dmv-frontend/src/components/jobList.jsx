@@ -27,31 +27,13 @@ function JobList() {
   //   console.log(formattedDate); // Output: 1:32 PM
   return (
     <div>
-      <Popup trigger={<button> Add New Job </button>} modal nested>
-        {(close) => (
-          <div className="modal">
-            <button className="close" onClick={close}>
-              &times;
-            </button>
-            <div className="header"> New Job Form </div>
-            <div className="content">
-              {" "}
-              <NewJobForm />
-            </div>
-            <div className="actions">
-              <button
-                className="button"
-                onClick={() => {
-                  console.log("modal closed ");
-                  close();
-                }}
-              >
-                close modal
-              </button>
-            </div>
-          </div>
-        )}
-      </Popup>
+      <button
+        onClick={() => {
+          window.location.href = "/addjob";
+        }}
+      >
+        Add New Job
+      </button>
       <table>
         <thead>
           <tr>

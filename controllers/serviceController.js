@@ -18,6 +18,22 @@ const getUserServices = async (req, res) => {
   }
 };
 
+const addNewService = async (req, res) => {
+  try {
+    console.log(req.body);
+    console.log("Posting new service");
+    const service = await prisma.service.create({
+      data: {
+        name: req.body.name,
+        userId: req.body.userId,
+      },
+    });
+    res.status(200).json(service);
+  } catch (error) {
+    res.status(404).json(error);
+  }
+};
+
 router.get("/", getUserServices);
 
 export default router;

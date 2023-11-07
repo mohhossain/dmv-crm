@@ -7,6 +7,12 @@ import Signup from "./components/Signup";
 import { ClientProvider } from "./context/clientContext";
 import { useUserContext } from "./context/userContext";
 import { JobContextProvider } from "./context/jobContext";
+import NewUserForm from "./components/newUserForm";
+import NewJobForm from "./components/newJobForm";
+import "./components/css/dashboard.css";
+import UserList from "./components/userList";
+import JobList from "./components/jobList";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -19,23 +25,34 @@ function App() {
   }, []);
 
   return (
-    <>
-      <ClientProvider>
-        <JobContextProvider>
-          <Routes>
-            {user ? (
-              <Route path="/" element={<Dashboard />} />
-            ) : (
-              <>
-                <Route path="/" element={<Login />} />
-                <Route path="/signin" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-              </>
-            )}
-          </Routes>
-        </JobContextProvider>
-      </ClientProvider>
-    </>
+    <div className="dashboard">
+      <div className="sidebar">
+        <Sidebar />
+      </div>
+      <div className="body">
+        <ClientProvider>
+          <JobContextProvider>
+            <Routes>
+              {user ? (
+                <>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/adduser" element={<NewUserForm />} />
+                  <Route path="/addjob" element={<NewJobForm />} />
+                  <Route path="/clients" element={<UserList />} />
+                  <Route path="/jobs" element={<JobList />} />
+                </>
+              ) : (
+                <>
+                  <Route path="/" element={<Login />} />
+                  <Route path="/signin" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                </>
+              )}
+            </Routes>
+          </JobContextProvider>
+        </ClientProvider>
+      </div>
+    </div>
   );
 }
 

@@ -14,9 +14,38 @@ const getUserClients = async (req, res) => {
       where: {
         userId: req.body.userId,
       },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        phone: true,
+        address: true,
+        userId: true,
+        // also return the last job for each client
+        Job: {
+          select: {
+            id: true,
+            createdAt: true,
+            service: {
+              select: {
+                id: true,
+                name: true,
+              },
+            },
+          },
+          orderBy: {
+            createdAt: "desc",
+          },
+          take: 1,
+        },
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
     res.status(200).json(clients);
   } catch (error) {
+    console.log(error);
     res.status(404).json(error);
   }
 };
