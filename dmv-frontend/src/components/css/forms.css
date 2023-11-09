@@ -1,0 +1,124 @@
+.user-form , .job-form, .service-form {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 0 auto;
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+
+
+.user-form  input{
+    width: 100%;
+    width: 700px;
+    height: 30px;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #aaaaaa;
+    background-color: #dfdfdf;
+    color: #000000;
+    font-size: 15px;
+}
+
+
+
+/* add style to input type submit */
+
+.user-form button{
+    width: 100%;
+    width: 720px;
+    /* height: 30px; */
+    margin: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #aaaaaa;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 15px;
+}
+
+.user-form button:hover{
+    background-color: #2ef5ff;
+}
+
+.job-form input{
+    width: 100%;
+    width: 700px;
+    height: 30px;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #aaaaaa;
+    background-color: #dfdfdf;
+    color: #000000;
+    font-size: 15px;
+}
+
+.job-form input[type=submit]{
+    width: 100%;
+    width: 720px;
+    height: 50px;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #aaaaaa;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.job-form input[type=submit]:hover{
+    background-color: #2ef5ff;
+}
+
+.job-form select{
+    width: 100%;
+    width: 700px;
+    height: 50px;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 25px;
+    border: 1px solid #aaaaaa;
+    background-color: #dfdfdf;
+    color: #000000;
+    font-size: 15px;
+}
+
+.service-form input{
+    width: 100%;
+    width: 700px;
+    height: 30px;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #aaaaaa;
+    background-color: #dfdfdf;
+    color: #000000;
+    font-size: 15px;
+}
+
+.service-form input[type=submit]{
+    width: 100%;
+    width: 720px;
+    height: 50px;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #aaaaaa;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.service-form input[type=submit]:hover{
+    background-color: #2ef5ff;
+}
+
+

@@ -11,6 +11,14 @@ const getUserServices = async (req, res) => {
       where: {
         userId: req.body.userId,
       },
+      include: {
+        // count of jobs for each service
+        Job: {
+          select: {
+            id: true,
+          },
+        },
+      },
     });
     res.status(200).json(services);
   } catch (error) {
@@ -26,14 +34,17 @@ const addNewService = async (req, res) => {
       data: {
         name: req.body.name,
         userId: req.body.userId,
+        price: req.body.price,
       },
     });
-    res.status(200).json(service);
+    res.status(201).json(service);
   } catch (error) {
+    console.log(error);
     res.status(404).json(error);
   }
 };
 
 router.get("/", getUserServices);
+router.post("/", addNewService);
 
 export default router;

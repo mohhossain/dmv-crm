@@ -13,6 +13,8 @@ import "./components/css/dashboard.css";
 import UserList from "./components/userList";
 import JobList from "./components/jobList";
 import Sidebar from "./components/Sidebar";
+import NewServiceForm from "./components/NewServiceForm";
+import ServiceList from "./components/ServiceList";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -40,6 +42,8 @@ function App() {
                   <Route path="/addjob" element={<NewJobForm />} />
                   <Route path="/clients" element={<UserList />} />
                   <Route path="/jobs" element={<JobList />} />
+                  <Route path="/addservice" element={<NewServiceForm />} />
+                  <Route path="/services" element={<ServiceList />} />
                 </>
               ) : (
                 <>

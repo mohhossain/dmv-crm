@@ -47,6 +47,7 @@ model Service {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   Job       Job[]
+  isActive  Boolean  @default(true)
 }
 
 model Job {

@@ -19,6 +19,14 @@ function Sidebar() {
       >
         Jobs
       </button>
+
+      <button
+        onClick={() => {
+          window.location.href = "/services";
+        }}
+      >
+        Services
+      </button>
       <button
         onClick={() => {
           window.location.href = "/adduser";
@@ -32,6 +40,13 @@ function Sidebar() {
         }}
       >
         Add Job
+      </button>
+      <button
+        onClick={() => {
+          window.location.href = "/addservice";
+        }}
+      >
+        Add Service
       </button>
       <button
         onClick={() => {

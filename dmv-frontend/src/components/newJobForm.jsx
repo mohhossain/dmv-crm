@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import Popup from "reactjs-popup";
+// import Popup from "reactjs-popup";
+import "./css/forms.css";
 
 import { useJobContext } from "../context/jobContext";
 
 function NewJobForm() {
   const { addJob } = useJobContext();
+  const { message } = useJobContext();
+  console.log(message);
   const [services, setServices] = useState([]);
+  // get all the list of services
   useEffect(() => {
     fetch("http://localhost:5555/api/services", {
       headers: {
@@ -26,22 +30,12 @@ function NewJobForm() {
     };
 
     addJob(job);
-
-    // fetch("http://localhost:5555/api/jobs", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-type": "application/json",
-    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //   },
-    //   body: JSON.stringify(job),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data));
   };
 
   return (
     <div>
-      <form className="new-user-form" onSubmit={handleSubmit}>
+      <form className="job-form" onSubmit={handleSubmit}>
+        <h1>Add New Job</h1>
         <select name="service" id="service" required>
           {services.map((service) => (
             <option key={service.id} value={service.id}>
@@ -54,6 +48,7 @@ function NewJobForm() {
         <input type="text" name="amount" id="amount" placeholder="Amount" />
 
         <input type="submit" value="Submit" />
+        <p>{message}</p>
       </form>
     </div>
   );
