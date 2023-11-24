@@ -37,11 +37,13 @@ function NewJobForm() {
       <form className="job-form" onSubmit={handleSubmit}>
         <h1>Add New Job</h1>
         <select name="service" id="service" required>
-          {services.map((service) => (
-            <option key={service.id} value={service.id}>
-              {service.name}
-            </option>
-          ))}
+          {services.map((service) =>
+            service.isActive ? (
+              <option key={service.id} value={service.id}>
+                {service.name}
+              </option>
+            ) : null
+          )}
         </select>
 
         <input type="text" name="client" id="client" placeholder="Client" />

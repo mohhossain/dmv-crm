@@ -44,7 +44,31 @@ const addNewService = async (req, res) => {
   }
 };
 
+const modifyService = async (req, res) => {
+  try {
+    // update multiple records with the ids in the array using prisma.$transaction
+    const services = await prisma.$transaction(
+      req.body.ids.map((service) =>
+        prisma.service.update({
+          where: {
+            id: parseInt(service),
+          },
+          data: {
+            isActive: req.body.isActive,
+          },
+        })
+      )
+    );
+
+    res.status(200).json(services);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json(error);
+  }
+};
+
 router.get("/", getUserServices);
 router.post("/", addNewService);
+router.put("/", modifyService);
 
 export default router;

@@ -22,6 +22,14 @@ function Sidebar() {
 
       <button
         onClick={() => {
+          window.location.href = "/transactions";
+        }}
+      >
+        Transactions
+      </button>
+
+      <button
+        onClick={() => {
           window.location.href = "/services";
         }}
       >
