@@ -26,6 +26,22 @@ const getUserJobs = async (req, res) => {
             name: true,
           },
         },
+        Note: {
+          select: {
+            id: true,
+            note: true,
+            createdAt: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+              },
+            },
+          },
+          orderBy: {
+            createdAt: "desc",
+          },
+        },
         isPending: true,
         Payment: true,
         createdAt: true,
@@ -33,6 +49,7 @@ const getUserJobs = async (req, res) => {
     });
     res.status(200).json(jobs);
   } catch (error) {
+    console.log(error);
     res.status(404).json(error);
   }
 };
@@ -64,6 +81,13 @@ const addNewJob = async (req, res) => {
           create: {
             amount: parseFloat(req.body.amount),
             isPaid: false,
+          },
+        },
+
+        Note: {
+          create: {
+            userId: req.body.userId,
+            note: req.body.note,
           },
         },
       },

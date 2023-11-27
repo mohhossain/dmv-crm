@@ -23,6 +23,7 @@ model User {
   client    Client[]
   Job       Job[]
   Service   Service[]
+  Note      Note[]
 }
 
 model Client {
@@ -62,6 +63,7 @@ model Job {
   updatedAt DateTime @updatedAt
   isPending Boolean  @default(true)
   Payment   Payment?
+  Note      Note[]
 }
 
 model Payment {
@@ -72,4 +74,15 @@ model Payment {
   updatedAt DateTime @updatedAt
   amount    Float
   isPaid    Boolean  @default(false)
+}
+
+model Note {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  job       Job      @relation(fields: [jobId], references: [id])
+  jobId     Int
+  note      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

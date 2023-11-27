@@ -27,6 +27,7 @@ function NewJobForm() {
       serviceId: e.target.service.value,
       clientId: e.target.client.value,
       amount: e.target.amount.value,
+      note: e.target.notes.value,
     };
 
     addJob(job);
@@ -48,6 +49,8 @@ function NewJobForm() {
 
         <input type="text" name="client" id="client" placeholder="Client" />
         <input type="text" name="amount" id="amount" placeholder="Amount" />
+
+        <textarea type="text" name="notes" id="notes" placeholder="Notes" />
 
         <input type="submit" value="Submit" />
         <p>{message}</p>

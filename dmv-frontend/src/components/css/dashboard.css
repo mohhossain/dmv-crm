@@ -91,6 +91,7 @@ th, td {
 
     font-weight: bolder;
     font-size: 18px;
+    /* text-align: center; */
 }
 
 
@@ -169,7 +170,7 @@ td {
 .jobs td {
     font-size: 15px;
     font-weight: 500;
-    padding: 20px;
+    padding: 10px;
     /* make it sticky */
 }
 

@@ -121,4 +121,17 @@
     background-color: #2ef5ff;
 }
 
+#notes{
+    width: 100%;
+    width: 700px;
+    height: 100px;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #aaaaaa;
+    background-color: #dfdfdf;
+    color: #000000;
+    font-size: 15px;
+}
+
 
