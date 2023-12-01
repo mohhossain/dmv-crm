@@ -74,6 +74,7 @@ model Payment {
   updatedAt DateTime @updatedAt
   amount    Float
   isPaid    Boolean  @default(false)
+  method    String   @default("cash")
 }
 
 model Note {

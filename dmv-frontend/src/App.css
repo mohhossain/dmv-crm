@@ -57,6 +57,9 @@ th{
 
 .job-details{
   padding: 50px;
+  max-height: 85vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #job-note{
@@ -115,5 +118,18 @@ th{
   background-color: #ffffff;
   color: #000000;
   font-size: 15px;
+  
 }
 
+.enable-save{
+  background-color: #30c108;
+  margin: 10px;
+}
+
+/* make the button unclickable */
+.disable-save{
+  background-color: #bfbfbf;
+  margin: 10px;
+  pointer-events: none;
+  cursor: not-allowed;
+}

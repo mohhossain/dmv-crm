@@ -55,6 +55,27 @@ function JobList() {
     console.log(jobs);
   };
 
+  async function handlePending() {
+    const res = await fetch(`http://localhost:5555/api/jobs/`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        id: job.id,
+        isPending: !jobDetails.isPending,
+      }),
+    });
+
+    if (res.status === 200) {
+      const data = await res.json();
+      setJobDetails(data);
+      console.log(jobDetails);
+      fetchJobs();
+    }
+  }
+
   //   console.log(formattedDate); // Output: 1:32 PM
   return (
     <div className="jobs">
@@ -82,7 +103,6 @@ function JobList() {
               <td>{job.Payment?.isPaid ? "Pending" : "Received"}</td>
               <td>{convertDate(job.createdAt)}</td>
               <td>
-                {/* popup */}
                 <Popup
                   trigger={<button className="button"> View </button>}
                   modal

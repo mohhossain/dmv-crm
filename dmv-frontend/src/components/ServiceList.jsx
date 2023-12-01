@@ -35,6 +35,11 @@ function ServiceList() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        // find the service that was updated in the services array
+        // update the isActive property of that service
+
+        let service = services.find((service) => service.id === data.id);
+        console.log(service);
       });
   };
   const handleInactive = (e) => {
@@ -57,8 +62,18 @@ function ServiceList() {
   };
   return (
     <div className="clients">
-      <button onClick={handleActive}>Mark as Active</button>
-      <button onClick={handleInactive}>Mark as Inactive</button>
+      <button
+        style={{ margin: "10px", backgroundColor: "green" }}
+        onClick={handleActive}
+      >
+        Mark as Active
+      </button>
+      <button
+        style={{ margin: "10px", backgroundColor: "orange" }}
+        onClick={handleInactive}
+      >
+        Mark as Inactive
+      </button>
       <table>
         <thead>
           <tr>
@@ -85,7 +100,7 @@ function ServiceList() {
           </tr>
         </thead>
         <tbody>
-          {services.map((service) => (
+          {services?.map((service) => (
             <tr
               style={{
                 cursor: "pointer",
